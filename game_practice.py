@@ -54,18 +54,14 @@ class Zombie:
             self.tired -= 20
 
 
-def main():
-    """Driver code"""
-    # Players
-    player_1 = Person("Bkendev", 18)
-    zombie_1 = Zombie(True, True)
+def general_menu(player_1):
     run = True
     # Main logic.
     while run:
         # Display options letter
-        menu.user_options()
+        Menu.general()
         # Input validation
-        usr_op = menu.input_validation(3)
+        usr_op = Menu.input_validation(2, 4)
 
         if usr_op == 1:
             # Check food.
@@ -77,10 +73,23 @@ def main():
 
         elif usr_op == 3:
             display_attr(player_1)
-        else:
+
+        elif usr_op == 0:
             run = False
             print("Good Bye!")
             screen_cleaner()
+
+        else:
+            print("Wrong option")
+            screen_cleaner()
+
+
+def main():
+    """Driver code"""
+    # Players
+    player_1 = Person("Bkendev", 18)
+    zombie_1 = Zombie(True, True)
+    general_menu(player_1)
 
 
 if __name__ == "__main__":
