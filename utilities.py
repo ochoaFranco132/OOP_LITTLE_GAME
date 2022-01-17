@@ -13,9 +13,16 @@ def screen_cleaner():
         os.system("cls")
 
 
-class menu:
+class Menu:
     @staticmethod
-    def user_options():
+    def general():
+        """Display a general Menu"""
+        print("1- Person")
+        print("2- Zombie")
+        print("0- Exit")
+
+    @staticmethod
+    def person():
         """Display a menu"""
         print("1- Run")
         print("2- Eat")
@@ -23,16 +30,27 @@ class menu:
         print("0- Exit")
 
     @staticmethod
-    def input_validation(nro):
-        """Take a number of options as parameter, validate input and return it."""
+    def zombie():
+        print("1- Scream")
+        print("2- Display attributes")
+        print("0- Exit")
+
+    def input_validation(nro, menu_type):
         op = int(input("Pick an option: "))
         screen_cleaner()
         while op < 0 or op > nro:
             print("Wrong Option, try again")
-            menu.user_options()
+            screen_cleaner()
+            assert menu_type <= 0 or menu_type > 3, "Wrong parameter value."
+            if menu_type == 1:
+                Menu.general()
+            elif menu_type == 2:
+                Menu.person()
+            else:
+                Menu.zombie()
+
             op = int(input("Pick an option: "))
             screen_cleaner()
-
         return op
 
 
